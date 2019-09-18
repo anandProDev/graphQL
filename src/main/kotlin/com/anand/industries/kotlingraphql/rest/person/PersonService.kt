@@ -1,11 +1,11 @@
-package com.anand.industries.kotlingraphql.rest
+package com.anand.industries.kotlingraphql.rest.person
 
+import com.anand.industries.kotlingraphql.dto.Person
 import org.springframework.stereotype.Service
 import java.util.ArrayList
 
 @Service
 class PersonService(private val personRepository: PersonRepository) {
-
 
     fun getAllPersons(): List<Person> {
 
