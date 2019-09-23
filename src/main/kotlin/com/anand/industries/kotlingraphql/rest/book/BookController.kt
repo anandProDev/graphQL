@@ -1,7 +1,6 @@
 package com.anand.industries.kotlingraphql.rest.person
 
 import com.anand.industries.kotlingraphql.dto.Book
-import com.anand.industries.kotlingraphql.dto.Person
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
