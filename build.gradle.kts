@@ -1,10 +1,18 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+
+buildscript {
+    dependencies {
+        classpath("org.jetbrains.kotlin:kotlin-noarg:1.2.71")
+    }
+}
+
 plugins {
     id("org.springframework.boot") version "2.1.7.RELEASE"
     id("io.spring.dependency-management") version "1.0.8.RELEASE"
     kotlin("jvm") version "1.2.71"
     kotlin("plugin.spring") version "1.2.71"
+    id("org.jetbrains.kotlin.plugin.noarg") version "1.2.71"
 }
 
 group = "com.anand.industries"

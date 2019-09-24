@@ -2,58 +2,34 @@ package com.anand.industries.kotlingraphql.graphql
 
 import com.anand.industries.kotlingraphql.dto.Author
 import com.anand.industries.kotlingraphql.dto.Book
+import com.anand.industries.kotlingraphql.rest.person.AuthorRepository
+import com.anand.industries.kotlingraphql.rest.person.BookRepository
+import com.anand.industries.kotlingraphql.rest.person.HobbieRepository
 import graphql.schema.DataFetcher
 import org.springframework.stereotype.Component
-import com.anand.industries.kotlingraphql.graphql.Repository as Database
 
 @Component
-class GraphQLDataFetchers(val database: Database) {
+class GraphQLDataFetchers(val bookRepository: BookRepository,
+                          val authorRepository: AuthorRepository,
+                          val hobbieRepository: HobbieRepository
+) {
 
     fun getBookById() = DataFetcher { dataFetchingEnvironment ->
-        val bookId = dataFetchingEnvironment.getArgument<Int>("id")
-        database.getBooks()
-            .filter { it.id == bookId }
-    }
-
-    fun getAuthorById() = DataFetcher { environment ->
-
-        val authorId = environment.getArgument<String?>("id")
-
-        val authors = database.getAuthors()
-        if(authorId == null){
-            authors
-        }
-        else {
-            authors.filter { it.id == authorId.toInt() }.firstOrNull()
-        }
-
-    }
-
-    fun getBooksByAuthor() = DataFetcher { environment ->
-
-        val author = environment.getSource<Author>()
-        database.getBooks()
-            .filter { it.id == author.id }
-    }
-
-    fun getHobbiesForAuthor() = DataFetcher { environment ->
-
-        val author = environment.getSource<Author>()
-        database.getHobbies()
-            .filter { author.hobbies.contains(it.id) }
+        val bookId = dataFetchingEnvironment.getArgument<String>("id").toInt()
+        bookRepository.findById(bookId)
     }
 
     fun getAuthorForBook() = DataFetcher { environment ->
 
         val book = environment.getSource<Book>()
-        database.getAuthors()
-            .filter { it.id == book.id }
+        val ids = book.authors.map { it.id }
+        authorRepository.findAllById(ids)
     }
 
-    fun getHobbiesById() = DataFetcher { environment ->
+    fun getHobbiesForAuthor() = DataFetcher { environment ->
 
-        val hobbieId = environment.getArgument<Int>("id")
-        database.getHobbies()
-            .filter { it.id == hobbieId }
+        val author = environment.getSource<Author>()
+        val ids = author.hobbies.map { it.id }
+        hobbieRepository.findAllById(ids)
     }
 }

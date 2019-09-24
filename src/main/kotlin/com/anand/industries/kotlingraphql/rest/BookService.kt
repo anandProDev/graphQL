@@ -1,11 +1,13 @@
-package com.anand.industries.kotlingraphql.rest.person
+package com.anand.industries.kotlingraphql.rest
 
 import com.anand.industries.kotlingraphql.dto.Book
-import com.anand.industries.kotlingraphql.dto.Person
+import com.anand.industries.kotlingraphql.rest.person.BookRepository
 import org.springframework.stereotype.Service
 import java.util.ArrayList
+import javax.transaction.Transactional
 
 @Service
+@Transactional
 class BookService(private val bookRepository: BookRepository) {
 
     fun getAllBooks(): List<Book> {
@@ -19,9 +21,8 @@ class BookService(private val bookRepository: BookRepository) {
         return bookRepository.findById(id).get()
     }
 
-    fun saveOrUpdate(book: Book) {
-        bookRepository.save(book)
-    }
+    fun saveOrUpdate(book: Book) = bookRepository.save(book)
+
 
     fun delete(id: Int) {
         bookRepository.deleteById(id)
