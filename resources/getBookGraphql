@@ -1,0 +1,24 @@
+# Write your query or mutation here
+
+query($id: ID!) {
+  bookById(id: $id) {
+    id
+    name
+    pageCount
+    author {
+        id
+        firstName
+        lastName
+        hobbies {
+            id
+            name
+        }
+    }
+  }
+}
+
+# GRAPHQL VARIABLES
+
+{
+	"id": 4
+}

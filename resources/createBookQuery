@@ -1,0 +1,29 @@
+
+curl -X POST \
+  http://localhost:8080/books \
+  -H 'Accept: */*' \
+  -H 'Accept-Encoding: gzip, deflate' \
+  -H 'Cache-Control: no-cache' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Length: 174' \
+  -H 'Content-Type: application/json' \
+  -H 'Cookie: JSESSIONID=EA87106CB383D36DCD30639B8ABAB9CE' \
+  -H 'Host: localhost:8080' \
+  -H 'Postman-Token: 2f1d0ba7-2c43-4e11-90c9-ecf62c33d63d,f7e72e32-23cf-45a6-bc96-afb463b9095d' \
+  -H 'User-Agent: PostmanRuntime/7.15.2' \
+  -H 'cache-control: no-cache' \
+  -d '{
+	"name":"69 shades of grey",
+	"pageCount":23,
+	"authors": [ {
+		"firstName": "Jamie",
+		"lastName": "Millner",
+		"hobbies": [
+				{
+					"name": "Singing"
+				}
+			]
+		}
+	]
+}
+'
