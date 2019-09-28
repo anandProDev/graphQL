@@ -16,9 +16,7 @@ class BookController(val bookService: BookService) {
     private fun getAllBooks() = bookService.getAllBooks()
 
     @GetMapping("/books/{id}")
-    private fun getBook(@PathVariable("id") id: Int): Book {
-        return bookService.getBookById(id)
-    }
+    private fun getBook(@PathVariable("id") id: Int) = bookService.getBookById(id)
 
 
     @DeleteMapping("/books/{id}")
@@ -29,6 +27,5 @@ class BookController(val bookService: BookService) {
     @PostMapping("/books")
     private fun saveBook(@RequestBody book: Book) =
         bookService.saveOrUpdate(book)
-
-
 }
+

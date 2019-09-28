@@ -14,7 +14,7 @@ import javax.persistence.Table
 class Book(@Id @GeneratedValue(strategy = GenerationType.AUTO) val id: Int, val name: String, val pageCount: Int, @OneToMany(
         fetch = FetchType.EAGER,
         cascade = [CascadeType.ALL]
-    ) val authors: List<Author>) {
+    ) var authors: List<Author>) {
 
     private constructor(): this(0, "", 0, listOf())
 }

@@ -17,7 +17,7 @@ class Author(
     @Id @GeneratedValue(strategy = GenerationType.AUTO) val id: Int, val firstName: String, val lastName: String, @OneToMany(
         fetch = FetchType.EAGER,
         cascade= [CascadeType.ALL]
-    ) val hobbies: List<Hobbie>
+    ) var hobbies: List<Hobbie>
 
 ) {
 

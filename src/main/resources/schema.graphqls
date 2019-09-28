@@ -1,5 +1,5 @@
 type Query {
-    bookById(id: ID): Book
+    bookById(id: ID!): Book
 }
 
 type Book {
@@ -14,7 +14,7 @@ type Author {
     firstName: String
     lastName: String
     book: [Book]
-    hobbies(type: String): [Hobbies]
+    hobbies: [Hobbies]
 }
 
 type Hobbies {
