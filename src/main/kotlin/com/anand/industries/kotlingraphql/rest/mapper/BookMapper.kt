@@ -1,4 +1,4 @@
-package com.anand.industries.kotlingraphql.mapper
+package com.anand.industries.kotlingraphql.rest.mapper
 
 import com.anand.industries.kotlingraphql.dto.Book
 import org.springframework.stereotype.Component

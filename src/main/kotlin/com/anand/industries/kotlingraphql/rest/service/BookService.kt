@@ -1,4 +1,4 @@
-package com.anand.industries.kotlingraphql.rest
+package com.anand.industries.kotlingraphql.rest.service
 
 import com.anand.industries.kotlingraphql.dto.Book
 import com.anand.industries.kotlingraphql.model.Book as BookModel

@@ -1,5 +1,5 @@
 type Query {
-    bookById(id: ID!): Book
+    getBooks(id: ID, name: String): [Book]
 }
 
 type Book {
@@ -14,7 +14,7 @@ type Author {
     firstName: String
     lastName: String
     book: [Book]
-    hobbies: [Hobbies]
+    hobbies(filter: String): [Hobbies]!
 }
 
 type Hobbies {
