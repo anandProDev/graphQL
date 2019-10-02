@@ -16,9 +16,9 @@ class BookService(private val bookRepository: BookRepository,
         return books.map(bookMapper)
     }
 
-    fun getBookById(id: Int): BookModel {
+    fun getBookById(id: Int): List<com.anand.industries.kotlingraphql.model.Book> {
         val book = bookRepository.findById(id).get()
-        return bookMapper(book)
+        return listOf(bookMapper(book))
     }
 
     fun saveOrUpdate(book: Book) = bookRepository.save(book)
