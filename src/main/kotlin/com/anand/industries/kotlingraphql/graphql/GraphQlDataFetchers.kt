@@ -20,7 +20,7 @@ class GraphQLDataFetchers(val bookService: BookService,
         val name = dataFetchingEnvironment.getArgument<String>("name")
 
         when {
-            bookId == null && name != null -> bookService.getAllBooks().filter {it.name == name}
+            bookId == null && name != null -> bookService.getAllBooks().filter {it.name.startsWith(name)}
             bookId != null && name == null -> bookService.getBookById(bookId.toInt())
             bookId != null && name != null -> {
                 val book = bookService.getBookById(bookId.toInt())
@@ -38,7 +38,8 @@ class GraphQLDataFetchers(val bookService: BookService,
 
         val book = environment.getSource<BookModel>()
         val authorName  = environment.getArgument<String?>("firstName")
-        val ids = book.authorIds
+        val ids = book.authorHref.map { it.replace("http://localhost:8080/authors/", "").toInt() }
+
         val authors = ids.map { authorService.getAuthorById(it) }
 
         authorName?.let { authors.filter { it.firstName.equals(authorName) } }
@@ -50,7 +51,7 @@ class GraphQLDataFetchers(val bookService: BookService,
         val hobbieName  = environment.getArgument<String?>("hobbieName")
 
         val authors = environment.getSource<AuthorModel>()
-        val ids = authors.hobbieIds
+        val ids = authors.hobbieHref.map { it.replace("http://localhost:8080/hobbies/", "").toInt() }
 
         val hobbies = ids.let { hobbieService.getHobbiesByIds(it) }
 
