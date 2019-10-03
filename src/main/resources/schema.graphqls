@@ -6,14 +6,14 @@ type Book {
     id: ID
     name: String
     pageCount: Int
-    author(firstName: String): [Author]
+    author: [Author]
 }
 
 type Author {
     id: ID
     firstName: String
     lastName: String
-    hobbies(hobbieName: String): [Hobbies]
+    hobbies: [Hobbies]
 }
 
 type Hobbies {

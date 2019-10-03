@@ -12,8 +12,8 @@ class BookMapper : (Book) -> BookModel {
             BookModel(
                 id = id,
                 name = name,
-                pageCount = pageCount,
-                authorIds = book.authors.map { it.id }
+                //pageCount = pageCount,
+                authorHref = book.authors.map { "http://localhost:8080/authors/${it.id}" }
             )
         }
 }
