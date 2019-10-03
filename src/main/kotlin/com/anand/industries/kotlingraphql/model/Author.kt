@@ -4,5 +4,5 @@ data class Author(
     val id: Int,
     val firstName: String,
     val lastName: String,
-    val hobbieIds : List<Int>
+    val hobbieHref : List<String>
 )
