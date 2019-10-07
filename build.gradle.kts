@@ -33,7 +33,7 @@ dependencies {
     runtimeOnly("com.h2database:h2:1.4.197") // Fixed version as a workaround for https://github.com/h2database/h2database/issues/1841
     runtimeOnly("org.springframework.boot:spring-boot-devtools")
     implementation("com.graphql-java:graphql-java:11.0")
-    implementation("com.graphql-java:graphql-java-spring-boot-starter-webmvc:1.0")
+//    implementation("com.graphql-java:graphql-java-spring-boot-starter-webmvc:1.0")
     implementation("com.google.guava:guava:26.0-jre")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
